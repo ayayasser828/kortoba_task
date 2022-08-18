@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "692445332906",
+    "project_id": "kortoba-task",
+    "storage_bucket": "kortoba-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692445332906:android:cd5cf627feb84ae98b97d3",
+        "android_client_info": {
+          "package_name": "com.example.kortoba_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692445332906-6d4imp3eg8fcdpiu700hie8t5j4hvcrh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kortoba_task",
+            "certificate_hash": "01aa7be5131e8cbd6978ff49c31c97a8ba901cc7"
+          }
+        },
+        {
+          "client_id": "692445332906-eba0ed8v397e8g13um0b9rmounvef75j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOwHVh19tUiRZvQDFz_EWAQWYiAfWuCoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692445332906-eba0ed8v397e8g13um0b9rmounvef75j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
