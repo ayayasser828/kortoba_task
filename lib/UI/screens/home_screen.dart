@@ -17,7 +17,9 @@ import '../widgets/text_button.dart';
 import '../widgets/text_form_filed.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key,this.acc}) : super(key: key);
+
+  final acc;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: DefaultTabController(
-              initialIndex: 0,
+              initialIndex: widget.acc == true ? 1 : 0,
               length: 2,
               child: Scaffold(
                 backgroundColor: whiteColor,
@@ -133,130 +135,132 @@ class _HomeScreenState extends State<HomeScreen> {
         condition: BlocProvider.of<RegisterCubit>(context).userModel != null,
         builder: (context) {
           var model = BlocProvider.of<RegisterCubit>(context).userModel;
-          return Column(
-            children: [
-              SizedBox(
-                width: 100.w,
-                height: 40.h,
-                child: Stack(
+          return SizedBox(
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 100.w,
+                  height: 46.h,
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        'assets/images/Rectangle 3.png',
+                        width: 100.w,
+                        height: 30.h,
+                        fit: BoxFit.fill,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 120),
+                        child: Center(
+                          child: Container(
+                              width: 53.w,
+                              height: 30.h,
+                              decoration:
+                                  const BoxDecoration(shape: BoxShape.circle),
+                              child: Image.asset(
+                                'assets/images/Ellipse 1.png',
+                                fit: BoxFit.fill,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  '${model!.fName!} ${model.lName!}',
+                  style: headerStyle.copyWith(fontSize: 12.sp),
+                ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text(
+                  model.email!,
+                  style:
+                      textFieldStyle.copyWith(fontSize: 10.sp, color: fieldColor),
+                ),
+                SizedBox(
+                  height: 6.h,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.asset(
-                      'assets/images/Rectangle 3.png',
-                      fit: BoxFit.fill,
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: buttonColor, shape: BoxShape.circle),
+                            width: 14.w,
+                            height: 7.h,
+                            child: const Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        Text(
+                          'تعديل بياناتي',
+                          style: headerStyle.copyWith(fontSize: 10.sp),
+                        ),
+                      ],
                     ),
-                    Positioned(
-                      bottom: -30,
-                      right: 24.w,
-                      child: Container(
-                          width: 53.w,
-                          height: 25.h,
-                          decoration:
-                              const BoxDecoration(shape: BoxShape.circle),
-                          child: Image.asset(
-                            'assets/images/Ellipse 1.png',
-                            fit: BoxFit.fill,
-                          )),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: buttonColor, shape: BoxShape.circle),
+                            width: 14.w,
+                            height: 7.h,
+                            child: const Icon(
+                              Icons.settings,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        Text(
+                          'الإعدادات',
+                          style: headerStyle.copyWith(fontSize: 10.sp),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                color: buttonColor, shape: BoxShape.circle),
+                            width: 14.w,
+                            height: 7.h,
+                            child: const Icon(
+                              Icons.star,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        Text(
+                          'المفضلة',
+                          style: headerStyle.copyWith(fontSize: 10.sp),
+                        ),
+                      ],
                     ),
                   ],
-                ),
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              Text(
-                '${model!.fName!} ${model.lName!}',
-                style: headerStyle.copyWith(fontSize: 12.sp),
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              Text(
-                model.email!,
-                style:
-                    textFieldStyle.copyWith(fontSize: 10.sp, color: fieldColor),
-              ),
-              SizedBox(
-                height: 6.h,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              color: buttonColor, shape: BoxShape.circle),
-                          width: 14.w,
-                          height: 7.h,
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'تعديل بياناتي',
-                        style: headerStyle.copyWith(fontSize: 10.sp),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              color: buttonColor, shape: BoxShape.circle),
-                          width: 14.w,
-                          height: 7.h,
-                          child: const Icon(
-                            Icons.settings,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'الإعدادات',
-                        style: headerStyle.copyWith(fontSize: 10.sp),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              color: buttonColor, shape: BoxShape.circle),
-                          width: 14.w,
-                          height: 7.h,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 1.h,
-                      ),
-                      Text(
-                        'المفضلة',
-                        style: headerStyle.copyWith(fontSize: 10.sp),
-                      ),
-                    ],
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           );
         },
         fallback: (context) => const Center(child: CircularProgressIndicator()),

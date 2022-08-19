@@ -27,10 +27,11 @@ class AppRouter {
               child: SignupScreen(),
             ));
       case home:
+        final acc = settings.arguments;
         return MaterialPageRoute(builder: (_) =>
             BlocProvider(
               create: (context) => RegisterCubit(),
-              child: const HomeScreen(),
+              child: HomeScreen(acc: acc),
             ));
       case fav:
         return MaterialPageRoute(builder: (_) =>

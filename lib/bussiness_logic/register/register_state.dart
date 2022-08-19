@@ -4,6 +4,8 @@ part of 'register_cubit.dart';
 abstract class RegisterState {}
 
 class RegisterInitial extends RegisterState {}
+class PostsLoading extends RegisterState {}
+class PostsSuccess extends RegisterState {}
 class ImageLoaded extends RegisterState {}
 class ImageError extends RegisterState {}
 class NewPostLoading extends RegisterState {}

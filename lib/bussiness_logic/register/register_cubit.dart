@@ -63,14 +63,14 @@ class RegisterCubit extends Cubit<RegisterState> {
   List<PostModel> posts =[];
 
   void getPosts() {
-    emit(UserDataLoading());
+    emit(PostsLoading());
     FirebaseFirestore.instance.collection('posts').snapshots().
     listen((event) {
         posts =[];
         event.docs.forEach((element) {
           posts.add(PostModel.fromJson(element.data()));
         });
-        emit(UserDataSuccess(userModel!));
+        emit(PostsSuccess());
     });
   }
 

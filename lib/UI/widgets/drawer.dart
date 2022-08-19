@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kortoba_task/constant/strings.dart';
 import 'package:sizer/sizer.dart';
 import '../../constant/colors.dart';
+import '../../constant/global_variables.dart';
 import '../../constant/style.dart';
 
 Widget drawer(BuildContext context){
@@ -35,7 +36,7 @@ Widget drawer(BuildContext context){
           title: const Text('الرئيسية',style: TextStyle(color: Color(0xff398BAF)),),
           onTap: () {
             Navigator.pop(context);
-            Navigator.pushNamed(context, home);
+            Navigator.pushNamedAndRemoveUntil(context, home, (route) => false);
           },
         ),
         Container(
@@ -52,6 +53,7 @@ Widget drawer(BuildContext context){
           title: const Text('حسابي',style: TextStyle(color: Color(0xff398BAF))),
           onTap: () {
             Navigator.pop(context);
+            Navigator.pushNamedAndRemoveUntil(context, home, (route) => false,arguments: true);
           },
         ),
         Container(
@@ -69,6 +71,24 @@ Widget drawer(BuildContext context){
           onTap: () {
             Navigator.pop(context);
             Navigator.pushNamed(context, fav);
+          },
+        ),
+        Container(
+          width: 1.w,
+          margin: const EdgeInsets.symmetric(horizontal: 40.0),
+          height: 0.08.h,
+          color: lineColor,
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.red,
+          ),
+          title: const Text('تسجيل الخروج',style: TextStyle(color: Color(0xff398BAF))),
+          onTap: () {
+            prefs.setBool("ISLOGGED", false);
+            prefs.setString('token', '');
+            Navigator.pushNamedAndRemoveUntil(context, login, (route) => false);
           },
         ),
       ],
